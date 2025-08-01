@@ -24,6 +24,7 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
+    "mongoose": "^8.17.0",
     "path-to-regexp": "^8.2.0",
     "pino": "^9.7.0",
     "pino-http": "^10.5.0",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
+    "@types/node": "^24.1.0",
     "eslint": "^9.32.0",
     "globals": "^16.3.0",
     "nodemon": "^3.1.10",
