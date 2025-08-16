@@ -5,10 +5,10 @@ import {
   contactTypeValidation,
 } from './helpers.js';
 
-export const createContactValidationSchema = Joi.object({
+export const patchContactValidationSchema = Joi.object({
   name: Joi.string().min(3).max(20),
-  phoneNumber: phoneNumberValidation,
-  email: emailValidation.required(),
+  phoneNumber: phoneNumberValidation(),
+  email: emailValidation(),
   isFavourite: Joi.boolean(),
-  contactType: contactTypeValidation,
+  contactType: contactTypeValidation(),
 });
