@@ -11,8 +11,11 @@ import { validateBody } from '../middlewares/validateBody.js';
 import { createContactValidationSchema } from '../validation/createContactValidationSchema.js';
 import { patchContactValidationSchema } from '../validation/patchContactValidationSchema.js';
 import { isValidId } from '../middlewares/isValidId.js';
+import { authenticate } from '../middlewares/authenticate.js';
 
 const router = Router();
+
+router.use(authenticate);
 
 router.get('/', ctrlWrapper(getAllContactsController));
 
