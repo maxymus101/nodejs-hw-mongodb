@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { CONTACT_TYPES } from '../constatns/contactType.js';
+import { CONTACT_TYPES } from '../constants/contactType.js';
 
 export const phoneNumberValidation = () => Joi.string().max(10);
 export const emailValidation = () =>
