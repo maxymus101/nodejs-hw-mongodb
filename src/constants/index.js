@@ -22,4 +22,7 @@ export const CLOUDINARY = {
   API_SECRET: 'API_SECRET',
 };
 
-export const ENABLE_CLOUDINARY = true | false;
+export const STORAGE_MODE = {
+  CLOUDINARY: 'cloudinary',
+  LOCAL: 'local',
+};

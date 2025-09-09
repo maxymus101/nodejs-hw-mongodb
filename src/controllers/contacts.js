@@ -11,7 +11,8 @@ import { parseSortParams } from '../utils/parseSortParams.js';
 import { parseFilterParams } from '../utils/parseFilterParams.js';
 import { saveFileToCloudinary } from '../utils/saveFileToCloudinary.js';
 import { saveFileToUploadDir } from '../utils/saveFileToUploadDir.js';
-import { ENABLE_CLOUDINARY } from '../constants/index.js';
+import { STORAGE_MODE } from '../constants/index.js';
+import { getEnvVar } from '../utils/getEnvVar.js';
 
 export const getAllContactsController = async (req, res) => {
   const { page, perPage } = parsePaginationParams(req.query);
@@ -52,11 +53,12 @@ export const getContactByIdController = async (req, res) => {
 
 export const createContactController = async (req, res) => {
   const photo = req.file;
+  const storageMode = getEnvVar('STORAGE_MODE');
 
   let photoUrl;
 
   if (photo) {
-    if (ENABLE_CLOUDINARY === 'true') {
+    if (storageMode === STORAGE_MODE.CLOUDINARY) {
       photoUrl = await saveFileToCloudinary(photo);
     } else {
       photoUrl = await saveFileToUploadDir(photo);
@@ -78,13 +80,14 @@ export const createContactController = async (req, res) => {
 
 export const patchContactController = async (req, res, next) => {
   const { contactId } = req.params;
+  const storageMode = getEnvVar('STORAGE_MODE');
   const photo = req.file;
   const userId = req.user._id;
 
   let photoUrl;
 
   if (photo) {
-    if (ENABLE_CLOUDINARY === 'true') {
+    if (storageMode === STORAGE_MODE.CLOUDINARY) {
       photoUrl = await saveFileToCloudinary(photo);
     } else {
       photoUrl = await saveFileToUploadDir(photo);
