@@ -26,3 +26,5 @@ export const STORAGE_MODE = {
   CLOUDINARY: 'cloudinary',
   LOCAL: 'local',
 };
+
+export const SWAGGER_PATH = path.join(process.cwd(), 'docs', 'swagger.json');
